@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { ReactNode } from "react";
 import { SideBar } from "./SideBar";
@@ -5,7 +6,7 @@ import { Header } from "./Header";
 
 export const AdminLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full max-h-[100vw] ">
       <SideBar />
       <div className="w-full bg-accent">{children}</div>
     </div>

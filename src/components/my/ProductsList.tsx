@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AddNewDish } from "./AddNewDish";
 import { ProductList } from "@/components/my";
 
-export const ProductsList = () => {
+export const ProductsList = ({ getDishDatas, datasOfDish }: any) => {
   return (
     <div className="h-fit p-5 bg-white rounded-2xl mt-[24px]">
       <div>
@@ -13,7 +13,15 @@ export const ProductsList = () => {
       </div>
       <div className="pt-4 flex flex-wrap gap-[16px]">
         <AddNewDish></AddNewDish>
-        <ProductList></ProductList>
+        {datasOfDish?.map((dish: any) => (
+          <div key={dish._id}>
+            <ProductList
+              datasOfDish={datasOfDish}
+              getDishDatas={getDishDatas}
+              dish={dish}
+            ></ProductList>
+          </div>
+        ))}
       </div>
     </div>
   );
