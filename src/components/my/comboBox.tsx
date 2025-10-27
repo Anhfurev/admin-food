@@ -47,7 +47,7 @@ export function ComboboxDemo({ value, setValue }: any) {
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[290px]   p-0 overflow-y-scroll">
+      <PopoverContent className="w-[290px] p-0">
         <Command>
           <CommandInput placeholder=" Search Category" className="h-9 w-full" />
           <CommandList>

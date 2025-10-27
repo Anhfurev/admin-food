@@ -13,7 +13,7 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
-export const AddNewDish = () => {
+export const AddNewDish = ({ getDatasOfDish }: any) => {
   const [categoryCheck, setCategoryCheck] = React.useState("all");
   const [image, setImage] = useState<File | undefined>();
   const [name, setName] = useState<string>("");
@@ -23,7 +23,7 @@ export const AddNewDish = () => {
   const [value, setValue] = React.useState("68edace9834d68c0c4df5fc7");
 
   // useEffect(() => {
-  //   getDataHandler();
+  //   getDatasOfDish();
   // }, []);
 
   const addFoodHandler = async () => {
@@ -114,7 +114,7 @@ export const AddNewDish = () => {
                     className="w-[194px] mt-1"
                     id="price"
                     name="price"
-                    type="number"
+                    type="text"
                     value={price}
                     onChange={priceChangeHandler}
                   />
@@ -135,7 +135,6 @@ export const AddNewDish = () => {
                   value={ingredients}
                   onChange={ingredientsChangeHandler}
                 />
-                <Input />
               </div>
 
               <div className=" justify-between w-full  flex gap-3">

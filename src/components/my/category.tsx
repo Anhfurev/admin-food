@@ -48,9 +48,9 @@ export const Category = () => {
   return (
     <div className="flex">
       <div className="min-h-70 bg-accent w-full fixed right-[0px] top-0">
-        <div className="w-12 h-30"></div>
+        <div className="flex-shrink-0 w-12 h-30"></div>
         <div className="flex">
-          <div className="w-64 h-10"></div>
+          <div className="flex-shrink-0 w-56 h-10"></div>
           <div className="p-6 bg-white h-fit w-full rounded-2xl mr-10 right-4  ">
             <h1 className="font-bold text-[20px] mb-4">Dishes category</h1>
             <div className="flex gap-3 items-center">

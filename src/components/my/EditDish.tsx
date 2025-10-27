@@ -20,30 +20,32 @@ export const EditDish = ({ dish }: any) => {
   const [categoryCheck, setCategoryCheck] = React.useState("all");
   const [checkImage, setCheckImage] = React.useState(false);
 
-  const [image, setImage] = useState<File | undefined>();
-  const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<number | undefined>(undefined);
-  const [ingredients, setIngredients] = useState<string>("");
+  const [image, setImage] = useState<File | undefined>(undefined);
+  const [name, setName] = useState<string>(dish.name);
+  const [price, setPrice] = useState<number | undefined>(dish.price);
+  const [ingredients, setIngredients] = useState<string>(dish.ingredients);
+  const [value, setValue] = React.useState(dish.categoryId.name);
+  const [id, setId] = React.useState(dish._id);
+  const [imageUrl, setImageUrl] = React.useState(dish.imageUrl);
 
-  const [editData, setEditData] = useState<any>([]);
-  const [value, setValue] = React.useState("");
-
-  const addFoodHandler = async () => {
-    if (!name || !price || !image || !ingredients || !value) {
+  const changeDishHandler = async () => {
+    if (!name || !price || !image || image || !ingredients || !value) {
       alert("All fields are required");
       return;
     }
 
     const form = new FormData();
 
-    form.append("foodName", name);
+    form.append("name", name);
     form.append("price", String(price));
     form.append("image", image); // File object
     form.append("ingredients", ingredients);
-    form.append("category", value);
+    form.append("categoryId", value);
+    form.append("id", id);
+    form.append("imageUrl", imageUrl);
 
     try {
-      const response = await fetch("http://localhost:4000/api/food", {
+      const response = await fetch(`http://localhost:4000/api/food/update`, {
         method: "POST",
         body: form,
       });
@@ -79,7 +81,7 @@ export const EditDish = ({ dish }: any) => {
             <Pencil className="text-red-500 w-[19px] z-1" />
           </div>
         </DialogTrigger>
-        <DialogContent className="p-5 w-[32%] [&>button]:top-[30px] [&>button]:right-[30px] ">
+        <DialogContent className="p-5 w-[420px] [&>button]:top-[30px] [&>button]:right-[30px] ">
           <DialogHeader>
             <div className="flex justify-between items-center">
               <DialogTitle className="mt-2">Dishes info</DialogTitle>
@@ -98,7 +100,7 @@ export const EditDish = ({ dish }: any) => {
                   className="w-[288px]"
                   id="name"
                   name="name"
-                  value={dish.name}
+                  value={name}
                   onChange={nameChangeHandler}
                 />
               </div>
@@ -109,10 +111,7 @@ export const EditDish = ({ dish }: any) => {
                 >
                   Dish category
                 </Label>
-                <ComboboxDemo
-                  value={dish.categoryId.name}
-                  setValue={setValue}
-                ></ComboboxDemo>
+                <ComboboxDemo value={value} setValue={setValue}></ComboboxDemo>
               </div>
 
               <div className="flex justify-between gap-3">
@@ -126,7 +125,7 @@ export const EditDish = ({ dish }: any) => {
                   className="w-[288px]"
                   id="ingredients"
                   name="ingredients"
-                  value={dish.ingredients}
+                  value={ingredients}
                   onChange={ingredientsChangeHandler}
                 />
               </div>
@@ -142,7 +141,7 @@ export const EditDish = ({ dish }: any) => {
                   id="price"
                   name="price"
                   type="number"
-                  value={dish.price}
+                  value={price}
                   onChange={priceChangeHandler}
                 />
               </div>
@@ -186,7 +185,7 @@ export const EditDish = ({ dish }: any) => {
                 type="submit"
                 size={"sm"}
                 className="w-fit px-4 py-[10px]"
-                onClick={addFoodHandler}
+                onClick={changeDishHandler}
               >
                 <p className="leading-5"> Save changes</p>
               </Button>

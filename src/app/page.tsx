@@ -37,26 +37,6 @@ export default function Home() {
               datasOfDish={datasOfDish}
               getDishDatas={getDishDatas}
             ></ProductsList>
-            <ProductsList
-              setDatasOfDish={setDatasOfDish}
-              datasOfDish={datasOfDish}
-              getDishDatas={getDishDatas}
-            ></ProductsList>
-            <ProductsList
-              setDatasOfDish={setDatasOfDish}
-              datasOfDish={datasOfDish}
-              getDishDatas={getDishDatas}
-            ></ProductsList>
-            <ProductsList
-              setDatasOfDish={setDatasOfDish}
-              datasOfDish={datasOfDish}
-              getDishDatas={getDishDatas}
-            ></ProductsList>
-            <ProductsList
-              setDatasOfDish={setDatasOfDish}
-              datasOfDish={datasOfDish}
-              getDishDatas={getDishDatas}
-            ></ProductsList>
           </div>
         </div>
       </div>
